@@ -1,4 +1,4 @@
-# 码志
+# 程序员夏俊
 
 我的个人博客：<https://xiajun325.github.io/>，欢迎访问。
 
@@ -16,7 +16,7 @@
 
 ## 效果预览
 
-**[在线预览 &rarr;](https://mazhuang.org)**
+**[在线预览 &rarr;](https://xiajun325.github.io/**
 
 ![screenshot home](https://mazhuang.org/assets/images/screenshots/home.png)
 
