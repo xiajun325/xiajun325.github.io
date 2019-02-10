@@ -4,17 +4,32 @@
       - C/C++
       - Python
       - Design Patterns
+      
+-name: 
+  keywords:
+      - PMP 
+      - 7
+      - 
+      - omniplan 
 
 - name: Mobile Developer Keywords
   keywords:
       - Android
       - Ios
-      - Reverse Engineering
+      - 
+      - 
+      
+- name: 
+  keywords:
+      - Linux
+      - pos 
+      - android framework 
+      - 
 
 - name: Windows Developer Keywords
   keywords:
       - Win32 SDK
       - Inject
-      - WTL
+      - QT
       - IDA
       - ollyDbg
