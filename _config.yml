@@ -104,8 +104,8 @@ gitment:
 gitalk:
     owner: xiajun325
     repo: blog-comments
-    clientID: 53e669f2c2dc32de5d8a
-    clientSecret: e215037970c6ba434c67049d023e7e1bf4afc959
+    clientID: bda212c5b183741cce88
+    clientSecret: 40a17b90a4360d29c080704ef6667ab498a6cb54
 # 在使用其它评论组件时可点击显示 Disqus
 lazy_load_disqus : false
 
