@@ -15,7 +15,7 @@ permalink: /about/
 想留下些什么
 
 ## Skill Keywords
-
+![](https://github.com/xiajun325/xiajun325.github.io/raw/master/images/wiki/skill.jpg)
 
 ## 联系
 
