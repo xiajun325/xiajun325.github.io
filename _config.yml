@@ -2,7 +2,7 @@
 #   Main Configs   #
 # ---------------- #
 baseurl:
-url: https://mazhuang.org
+url: https://xiajun325.github.io/
 date_format: "ordinal"
 title: 码迹
 subtitle: "没有做不到，只有想不到"
@@ -15,12 +15,12 @@ side_bar_repo_limit: 5
 # ---------------- #
 #      Author      #
 # ---------------- #
-author: Zhuang Ma
-organization: zkh360.com
-organization_url: http://www.zkh360.com
+author: 夏俊
+organization: 
+organization_url: https://xiajun325.github.io/
 github_username: mzlogin
-location: Wuhan, China
-email: chumpma@gmail.com
+location: Hangzhou, China
+email: xiajun325@gmail.com
 
 # ---------------- #
 #    Navigation    #
