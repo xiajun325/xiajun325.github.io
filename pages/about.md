@@ -14,13 +14,6 @@ permalink: /about/
 
 想留下些什么
 
-## 联系
-
-{% for website in site.data.social %}
-* {{ website.sitename }}：[@{{ website.name }}]({{ website.url }})
-{% endfor %}
-
-## Skill Keywords
 
 - 语言技能
       - Java
@@ -57,3 +50,12 @@ permalink: /about/
       - IDA
       - ollyDbg
       - xposed
+
+
+## 联系
+
+{% for website in site.data.social %}
+* {{ website.sitename }}：[@{{ website.name }}]({{ website.url }})
+{% endfor %}
+
+## Skill Keywords
