@@ -1,18 +1,18 @@
 ---
 layout: page
 title: About
-description: 打码改变世界
-keywords: Zhuang Ma, 马壮
+description: 没有做不到，只有想不到
+keywords: Jun xia, 夏俊
 comments: true
 menu: 关于
 permalink: /about/
 ---
 
-我是马壮，码而生，码而立。
+我是夏俊
 
-仰慕「优雅编码的艺术」。
+我
 
-坚信熟能生巧，努力改变人生。
+想留下些什么
 
 ## 联系
 
