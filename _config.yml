@@ -125,3 +125,9 @@ simple_jekyll_search:
   #   analytics_id: UA-80669434-1
 baidu:
     baidu-analysis: 54e8d15e79a91add2d251f670000defb
+leancloud:
+    enable: true
+    app_id: OlvIN5GjWyBRCTWvjTfViao8-gzGzoHsz
+    app_key: J62vhGDN8nmo2xwjSFtQckrl
+
+
