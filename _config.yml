@@ -121,7 +121,7 @@ simple_jekyll_search:
 # ---------------- #
 #    Analytics     #
 # ---------------- #
-google:
-    analytics_id: UA-80669434-1
+##google:
+  #   analytics_id: UA-80669434-1
 baidu:
     baidu-analysis: 54e8d15e79a91add2d251f670000defb
