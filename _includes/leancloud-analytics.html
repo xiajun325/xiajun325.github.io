@@ -87,6 +87,7 @@
       });
     }
 
+  /*
     //调用API获取IP
     function getVisitorIpAndJudge() {
       var ip;
@@ -104,6 +105,38 @@
         judgeVisitor(ip)
       });
     }
+    */
+
+    //调用API获取IP
+    function getVisitorIpAndJudge() {
+      //note by PriestTomb 2018-07-08
+      //freegeoip近期有变动，取ip改为用api.ipify.org，并设置"默认"ip:1.2.3.4
+      //用json格式获取
+      var ip = "1.2.3.4";
+      var options = {
+        type: 'GET',
+        dataType: "json",
+        //async: false, //jquery3中可以直接使用回调函数，不用再指定async
+        url: "https://api.ipify.org/?format=json"
+      };
+      $.ajax(options)
+      .done(function(data, textStatus, jqXHR) {
+        if(textStatus == "success") {
+          try {
+            ip = data.ip;
+          } catch (e) {
+            ip = "1.2.3.4";
+            if(window.console){
+              console.log(e.message);
+            }
+          }
+        } else {
+          ip = "1.2.3.4";
+        }
+        judgeVisitor(ip);
+      });
+    }
+
 
     //判断访客是否已访问过该文章，及访问时间，符合条件则增加一次访问次数
     function judgeVisitor(ip) {
