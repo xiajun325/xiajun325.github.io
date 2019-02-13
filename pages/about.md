@@ -1,3 +1,12 @@
+---
+layout: page
+title: About
+description: 没有做不到,只有想不到
+keywords: Jun xia,夏俊
+comments: true
+menu: 关于
+permalink: /about/
+---
 
 <h1>联系方式</h1>
 <div style="float:right">
