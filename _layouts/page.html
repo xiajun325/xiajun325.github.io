@@ -12,6 +12,14 @@ layout: default
                     </span>
                 </div>
             {% endif %}
+             {% if site.leancloud.enable %}
+          <span id="{{ page.url }}" class="leancloud_visitors" data-flag-title="{{ page.title }}">
+           <span class="post-meta-divider tags" ></span>
+           <span class="post-meta-item-text tags">  ÔÄ¶ÁÁ¿:  </span>
+           <span class="leancloud-visitors-count tags"></span> ´Î
+   
+          </span>
+               {% endif %}
         </div>
     </div>
 </section>
@@ -33,6 +41,7 @@ layout: default
                 {% include sidebar-search.html %}
                 {% include sidebar-qrcode.html %}
                 {% include sidebar-popular-repo.html %}
+                 {% include leancloud-analytics.html %}
             </div>
         </div>
     </section>
