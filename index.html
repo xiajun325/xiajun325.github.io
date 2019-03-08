@@ -33,10 +33,15 @@ comments: false
     <div class="columns">
         <div class="column two-thirds" >
             <ol class="repo-list">
-                {% for post in paginator.posts %}
+                {% assign sorted_posts = paginator.posts | sort:"sticky"  | reverse %}
+                {% for post in sorted_posts %}
                 <li class="repo-list-item">
                     <h3 class="repo-list-name">
+                      {% if post.sticky %}
+                      <a href="{{ site.url }}{{ post.url }}">[置顶]{{ post.title }}</a>
+                      {% else %}
                       <a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a>
+                      {% endif %}
                     </h3>
                     <p class="repo-list-description">
                         {{ post.excerpt | strip_html | strip }}
