@@ -10,7 +10,7 @@ permalink: /about/
 <h1>联系方式</h1>
 <div style="float:right">
 <div class="item disintegration-target">
-    <img src="https://github.com/xiajun325/myresume/raw/master/photo.jpeg" width="200" height = "254">
+    <img src="../images/photo.jpeg" width="200" height = "254">
 </div>
 </div>
 
