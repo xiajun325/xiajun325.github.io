@@ -9,24 +9,27 @@ const NUM_FRAMES = 128;
  * @return {HTMLCanvasElement[]} Each canvas contains a subset of the original pixels
  */
 
- // 转为base64图片
- function getBase64Image(img) {
-     let canvas = document.createElement('canvas')
-     canvas.width = img.width
-     canvas.height = img.height
-     let ctx = canvas.getContext('2d')
-     ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
-     let dataURL = canvas.toDataURL('image/png') // 可选其他值 image/jpeg
-     return dataURL
- }
+// 转为base64图片
+function getBase64Image(img) {
+  let canvas = document.createElement('canvas')
+  canvas.width = img.width
+  canvas.height = img.height
+  let ctx = canvas.getContext('2d')
+  ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
+  let dataURL = canvas.toDataURL('image/png') // 可选其他值 image/jpeg
+  return dataURL
+}
 
 
 function generateFrames($canvas, count = 32) {
-  const { width, height } = $canvas;
+  const {
+    width,
+    height
+  } = $canvas;
   const ctx = $canvas.getContext("2d");
   const originalData = ctx.getImageData(0, 0, width, height);
   const imageDatas = [...Array(count)].map(
-    (_,i) => ctx.createImageData(width, height)
+    (_, i) => ctx.createImageData(width, height)
   );
 
   // assign the pixels to a canvas
@@ -40,8 +43,7 @@ function generateFrames($canvas, count = 32) {
         const pixelIndex = (y * width + x) * 4;
         // copy the pixel over from the original image
         for (let offset = 0; offset < 4; ++offset) {
-          imageDatas[dataIndex].data[pixelIndex + offset]
-            = originalData.data[pixelIndex + offset];
+          imageDatas[dataIndex].data[pixelIndex + offset] = originalData.data[pixelIndex + offset];
         }
       }
     }
@@ -68,6 +70,46 @@ function replaceElementVisually($old, $new) {
   $old.style.visibility = "hidden";
 }
 
+function effect_init_state($frame) {
+  const randomRadian = 2 * Math.PI * (Math.random() - 0.5);
+  $frame.className = "canvas-start-state"
+  $frame.style.transform =
+    `rotate(${15 * (Math.random() - 0.5)}deg) translate(${60 * Math.cos(randomRadian)}px, ${30 * Math.sin(randomRadian)}px)
+rotate(${15 * (Math.random() - 0.5)}deg)`;
+  $frame.style.opacity = 0;
+}
+
+function effect_end_state($frame) {
+  console.log("effect_end_state");
+  $frame.className = "canvas-end-state"
+  $frame.style.transform =
+    `rotate(0deg) translate(0px, 0px) rotate(0deg)`;
+  $frame.style.opacity = 1;
+}
+
+function all_browser_add_event_listener($frame, fun) {
+  $frame.addEventListener("transitionend", fun, false);
+  $frame.addEventListener("webkitTransitionEnd", fun, false);
+  $frame.addEventListener("mozTransitionEnd", fun, false);
+  $frame.addEventListener("msTransitionEnd", fun, false);
+  $frame.addEventListener("oTransitionEnd", fun, false);
+}
+
+function effect_loop(e) {
+  //console.log("最后一帧动画结束:--- " + e.propertyName);
+  if (e.propertyName == "opacity") {
+    var done_flag = false;
+    [...document.querySelectorAll(".canvas-start-state")].forEach($frame => {
+      effect_end_state($frame);
+      done_flag = true;
+    });
+    if (done_flag) return;
+    [...document.querySelectorAll(".canvas-end-state")].forEach($frame => {
+      effect_init_state($frame);
+    });
+  }
+}
+
 
 
 /**
@@ -75,7 +117,6 @@ function replaceElementVisually($old, $new) {
  * @param {HTMLElement} $elm
  */
 function disintegrate($elm) {
-  var count = 0;
   html2canvas($elm, {
     allowTaint: false,
     useCORS: true,
@@ -84,21 +125,19 @@ function disintegrate($elm) {
     // create the container we'll use to replace the element with
     const $container = document.createElement("div");
     $container.classList.add("disintegration-container");
-    count++;
-    console.log("update count: " + count);
-  //  var animation2gif = new animation_gif($container, 33);
+    //  var animation2gif = new animation_gif($container, 33);
     // setup the frames for animation
     const $frames = generateFrames($canvas, NUM_FRAMES);
     $frames.forEach(($frame, i) => {
       $frame.style.transitionDelay = `${1.35 * i / $frames.length}s`;
       $container.appendChild($frame);
-    //  gif.addFrame($frame, {delay: $frame.style.transitionDelay});
-     // if (i >= NUM_FRAMES - 1)  {
-     //    console.log("动画开始: " + i);
-     //   $frame.addEventListener("transitionend", () => {
-     //    animation2gif.stop();
-     //   });
-     // }
+      //  gif.addFrame($frame, {delay: $frame.style.transitionDelay});
+      // if (i >= NUM_FRAMES - 1)  {
+      //    console.log("动画开始: " + i);
+      //   $frame.addEventListener("transitionend", () => {
+      //    animation2gif.stop();
+      //   });
+      // }
     });
 
     // then insert them into the DOM over the element
@@ -108,12 +147,13 @@ function disintegrate($elm) {
     if (!DEBUG) {
       // set the values the frame should animate to
       // note that this is done after reflow so the transitions trigger
-      $frames.forEach($frame => {
-        const randomRadian = 2 * Math.PI * (Math.random() - 0.5);
-        $frame.style.transform =
-          `rotate(${15 * (Math.random() - 0.5)}deg) translate(${60 * Math.cos(randomRadian)}px, ${30 * Math.sin(randomRadian)}px)
-rotate(${15 * (Math.random() - 0.5)}deg)`;
-			  $frame.style.opacity = 0;
+      $frames.forEach(($frame, index) => {
+        effect_init_state($frame);
+        //console.log("index: " + index)
+        if (index == $frames.length - 1) {
+          //start loop
+          all_browser_add_event_listener($frame, effect_loop);
+        }
         // gif.addFrame($frame, {delay: $frame.style.transitionDelay});
       });
     } else {
@@ -122,7 +162,7 @@ rotate(${15 * (Math.random() - 0.5)}deg)`;
       });
     }
 
-   //animation2gif.start()
+    //animation2gif.start()
 
 
   });
@@ -135,57 +175,52 @@ function animation_gif(tag, nRate) {
   var gif = new GIF({
     workers: 2,
     quality: 10,
-    workerScript:'./gif.worker.js'
+    workerScript: './gif.worker.js'
   });
 
-   this.start = () => {
-      console.log("start render():");
-      stop = false;
-      var framecount = 0;
-         nIntervId = setInterval((tag) =>
-         {
-            framecount++;
-            if (stop || framecount > 50) return;
-            html2canvas(document.getElementsByName("body")[0]).then($canvas => {
-               console.log("add ");
-                gif.addFrame($canvas, {delay: nRate});
-                //gif.render();
-              //gif.addFrame($canvas.getContext("2d"), {copy: true});
-            });
-         } , nRate);
-   };
-
-   this.stop = function () {
-       console.log("stop render():");
-       stop = true;
-        clearInterval(nIntervId);
-        gif.on('finished', function(blob) {
-          // 这里的blob就是gif图片blod格式信息
-          window.open(URL.createObjectURL(blob));
+  this.start = () => {
+    console.log("start render():");
+    stop = false;
+    var framecount = 0;
+    nIntervId = setInterval((tag) => {
+      framecount++;
+      if (stop || framecount > 50) return;
+      html2canvas(document.getElementsByName("body")[0]).then($canvas => {
+        console.log("add ");
+        gif.addFrame($canvas, {
+          delay: nRate
         });
-        gif.render();
-      //
-   };
+        //gif.render();
+        //gif.addFrame($canvas.getContext("2d"), {copy: true});
+      });
+    }, nRate);
+  };
+
+  this.stop = function() {
+    console.log("stop render():");
+    stop = true;
+    clearInterval(nIntervId);
+    gif.on('finished', function(blob) {
+      // 这里的blob就是gif图片blod格式信息
+      window.open(URL.createObjectURL(blob));
+    });
+    gif.render();
+    //
+  };
 }
 
 
 
 /** === Below is just to bind the module and the DOM == */
 [...document.querySelectorAll(".disintegration-target")].forEach($elm => {
-  $elm.addEventListener("click", () => {
-    if ($elm.disintegrated) { return; }
-    $elm.disintegrated = true;
-    disintegrate($elm);
-  });
+  //$elm.addEventListener("click", () => {
+  if ($elm.disintegrated) {
+    return;
+  }
+  $elm.disintegrated = true;
+  disintegrate($elm);
+  //  });
 });
-
-// (function() {
-//   [...document.querySelectorAll(".disintegration-target")].forEach($elm => {
-//       if ($elm.disintegrated) { return; }
-//       $elm.disintegrated = true;
-//       disintegrate($elm);
-//   });
-// })();
 
 // (function(){
 //   let imgs = document.querySelectorAll('img')
