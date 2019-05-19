@@ -68,6 +68,11 @@
     {% if page.mathjax %}
     <script type="text/javascript" src="https://basis-learning.github.io/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     {% endif %}
+
+    {% if page.title == "About" %}
+    <script src="https://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+    <script src="{{ site.url }}/assets/js/disintegration/main.js"></script>
+    {% endif %}
    <!--
     {% if site.google.analytics_id %}
     <div style="display:none">
@@ -91,7 +96,7 @@
     (function() {
       var hm = document.createElement("script");
       hm.src = "https://hm.baidu.com/hm.js?{{ site.baidu.baidu-analysis}}";
-      var s = document.getElementsByTagName("script")[0]; 
+      var s = document.getElementsByTagName("script")[0];
       s.parentNode.insertBefore(hm, s);
     })();
     </script>

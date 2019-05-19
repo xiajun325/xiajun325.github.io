@@ -18,6 +18,10 @@
     <link rel="stylesheet" href="{{ site.url }}/assets/vendor/share.js/dist/css/share.min.css">
     <link rel="stylesheet" href="{{ site.url }}/assets/css/globals/responsive.css">
     <link rel="stylesheet" href="{{ site.url }}/assets/css/posts/index.css">
+    {% if page.title == "About" %}
+      <link rel="stylesheet" href="{{ site.url }}/assets/css/disintegration/main.css">
+    {% endif %}
+
     <!-- Latest compiled and minified CSS -->
     {% for css in page.css %}
     <link rel="stylesheet" href="{{ site.url }}/assets/css/{{css}}">
