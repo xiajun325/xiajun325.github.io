@@ -26,7 +26,8 @@ permalink: /about/
  - 工作年限：12年
  - 技术博客：<https://xiajun325.github.io/>
  - Github：<https://github.com/xiajun325>
- - 期望职位：技术经理/总监 资深移动端开发 项目经理 产品经理
+ - 期望职位：资深大前端(web,移动端)开发或技术管理 技术经理/总监 项目经理
+ - 技术栈：	java(spring), javascrip(vue, react, rn, node), c/c++(嵌入式或linux,windows),python
  - 期望薪资：根据实际情况面谈
  - 期望城市：杭州
 
@@ -193,20 +194,10 @@ permalink: /about/
 
 以下均为我熟练使用的技能
 
-- 前端开发：Android/IOS/HTML/MarkDown/UML 类图 序列图
+- 大前端开发：Android/IOS/HTML/css/javascript/react/rn/vue/webpack
+- 后端开发：java/node
 - 嵌入式开发：C/C++/Linux/QT/m1卡/cpu卡
-- 支付相关：8583/银联pboc/对账
-- 软件安全：反编译/Crack/安全分析
-- 项目管理：PMP证书/visio/project/omnimap
-- 产品：与客户沟通/写需求文档/制作原型图
+- 软件安全：安卓反编译/Crack/安全分析
+- 项目管理：PMP证书/visio/project/omnimap/与客户沟通/写需求文档/制作原型图
 - 数据库相关：MySQL//SQLite
-- 版本管理、文档和自动化部署工具：Svn/Git
-- 云和开放平台：leanclound/阿里云/
-- 人工智能：Python/数据爬取/人工智能
-
-# 转行项目经理或者产品经理的优势
-1. 与客户沟通经验丰富，能准确把握客户需求。
-2. 拥有多年开发经验，可把客户需求更好的用开发工程师理解的语言表述出来。
-4. 理解开发工程师心理，能更好的与开发工程师沟通。
-5. 可直接用开发工具画出原型图，原型图更准确。
-6. 系统学习过项目管理课程，并以5A成绩获取PMP证书。
+- 版本管理、文档和自动化部署工具：Svn/Git/vscode
